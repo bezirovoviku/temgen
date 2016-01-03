@@ -67,10 +67,10 @@ class Batch implements \Temgen\Converter
 		if ($code != 0) {
 			//Clean after us
 			unlink($import);
-			unlink($export);
+			@unlink($export);
 			rmdir($temp);
 			
-			throw new \Exception("Failed to convert document. Error: $code. Command: $command");
+			throw new \Exception("Failed to convert document. Error: $code.");
 		}
 		
 		//Remove original document

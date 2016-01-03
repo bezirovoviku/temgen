@@ -12,6 +12,9 @@ class Docx extends \Temgen\Generator
 	 * @param \Temgen\Document $document template
 	 */
 	public function setTemplate(\Temgen\Document $document) {
+		if (!$document instanceof \Temgen\Document\Docx)
+			throw new \Exception("Docx generator works only with docx documents");
+		
 		$this->template = $document;
 	}
 	

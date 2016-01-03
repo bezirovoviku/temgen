@@ -30,6 +30,10 @@ class Document
 		$this->filename = $name;
 	}
 	
+	public function getFilename() {
+		return $this->filename;
+	}
+	
 	public function setContents($content) {
 		$this->contents = $content;
 	}

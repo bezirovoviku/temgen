@@ -1,8 +1,6 @@
 <?php
 namespace Temgen\Converter;
 
-use Symfony\Component\Process\Process;
-
 /**
  * This convertor uses batch to convert to something
  */

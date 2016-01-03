@@ -11,9 +11,12 @@ require_once('../src/Temgen/Converter.php');
 require_once('../src/Temgen/Converter/Batch.php');
 require_once('../src/Temgen/Converter/PPDF.php');
 require_once('../src/Temgen/Converter/OPDF.php');
+require_once('../src/Temgen/Converter/MD.php');
+require_once('../src/Temgen/Converter/Composite.php');
 require_once('../src/Temgen/ParseException.php');
 require_once('../src/Temgen/Document.php');
 require_once('../src/Temgen/Document/Docx.php');
+require_once('../vendor/autoload.php');
 
 $input_data = array(
 	array(
@@ -44,12 +47,18 @@ $archive = 'tmp/archive-txt.zip';
 if (file_exists($archive))
 	unlink($archive);
 
+$composite = new Temgen\Converter\Composite([
+	new Temgen\Converter\MD,
+	new Temgen\Converter\PPDF
+]);
+
 $generator = new Temgen\Generator();
 $generator->addFilters();
-$generator->setTemplate(new Temgen\Document('data/template.html'));
+$generator->setTemplate(new Temgen\Document('data/template.md'));
 $generator->setTmp('./tmp/');
-$generator->generateArchive($input_data, $archive, new Temgen\Converter\PPDF);
+$generator->generateArchive($input_data, $archive, $composite);
 
+/*
 $archive = 'tmp/archive-docx.zip';
 if (file_exists($archive))
 	unlink($archive);
@@ -59,3 +68,4 @@ $generator->addFilters();
 $generator->setTemplate(new Temgen\Document\Docx('data/template.docx'));
 $generator->setTmp('./tmp/');
 $generator->generateArchive($input_data, $archive, new Temgen\Converter\OPDF);
+*/

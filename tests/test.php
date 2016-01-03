@@ -46,9 +46,9 @@ if (file_exists($archive))
 
 $generator = new Temgen\Generator();
 $generator->addFilters();
-$generator->setTemplate(new Temgen\Document('data/template.txt'));
+$generator->setTemplate(new Temgen\Document('data/template.html'));
 $generator->setTmp('./tmp/');
-$generator->generateArchive($input_data, $archive);
+$generator->generateArchive($input_data, $archive, new Temgen\Converter\PPDF);
 
 $archive = 'tmp/archive-docx.zip';
 if (file_exists($archive))

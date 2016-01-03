@@ -1,23 +1,24 @@
-# Docx template generator
-This is simple template system for docx files. It uses text replacement, allows cyclical replacements and basic filters.
+# Template generator
+This is simple template system for document files. It uses text replacement, allows cyclical replacements and basic filters.
 
 ## Installation
 You can install this library using composer
 
 ```
-composer require bezirovoviku/docx
+composer require bezirovoviku/temgen
 ```
 
 ## Requirements
 
 LibreOffice (2+) - only for OPDF converter
+PhantomJS - only for PPDF converter
 
 ## Usage
 
 First you will need to include the generator class
 
 ```php
-use Docx\Generator;
+use Temgen\Generator;
 ```
 
 then use generator class as follows
@@ -30,17 +31,17 @@ $generator->addFilters();
 //Sets temporary folder used to store documents
 $generator->setTmp('/tmp');
 //Sets path to template file
-$generator->setTemplate('template.docx');
+$generator->setTemplate('template.html');
 //Generates zip archive from specified data
 $generator->generateArchive(json_decode($this->data, true), 'archive.zip');
 ```
 
 ## Creating custom filters
 
-To create custom filter, you will need to implement \Docx\Generator\Filter interace
+To create custom filter, you will need to implement \Temgen\Generator\Filter interace
 
 ```php
-class MyFilter implements \Docx\Generator\Filter
+class MyFilter implements \Temgen\Generator\Filter
 {
 	/**
 	 * Returns tag used to identify filter
@@ -54,7 +55,7 @@ class MyFilter implements \Docx\Generator\Filter
 	/**
 	 * Filter given arguments and return result
 	 *
-	 * @param \Docx\Generator $generator generator calling this filter
+	 * @param \Temgen\Generator $generator generator calling this filter
 	 * @param array           $context   replacing context
 	 * @param array           $arguments arguments passed to filter
 	 * @param string|null     $input     pipe input (if present)
@@ -80,8 +81,8 @@ now, in this generator instance, filter MyFilter will be accessible by {myfilter
 This requires libreoffice installed
 
 ```php
-//Creates generator
-$generator = new Generator();
+//Creates docx generator
+$generator = new Generator\Docx();
 //PDF converter
 $converter = new Convertor\OPDF();
 //Adds basic filters

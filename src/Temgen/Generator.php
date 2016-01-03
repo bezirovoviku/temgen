@@ -81,6 +81,7 @@ class Generator
 	 */
 	public function generate($data) {
 		$document = new Document();
+		$document->setFilename("document." . $this->template->getExtension());
 		$document->setContents($this->replace($this->template->getContents(), $data));
 		return $document;
 	}

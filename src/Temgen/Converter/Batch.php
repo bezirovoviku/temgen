@@ -1,6 +1,8 @@
 <?php
 namespace Temgen\Converter;
 
+use Symfony\Component\Process\Process;
+
 /**
  * This convertor uses batch to convert to something
  */
@@ -60,9 +62,7 @@ class Batch implements \Temgen\Converter
 			throw new \Exception("Failed to export document.");
 		
 		//Call batch
-		$command = $this->getCommand($import, $export, $temp);
-		$output = "";
-		$code = 0;
+		$command = "cd " . escapeshellarg(__DIR__) . " && " . $this->getCommand($import, $export, $temp);
 		exec($command, $output, $code);
 		
 		//Handle error outputs
@@ -72,7 +72,7 @@ class Batch implements \Temgen\Converter
 			unlink($export);
 			rmdir($temp);
 			
-			throw new \Exception("Failed to convert document. Error code: $code.");
+			throw new \Exception("Failed to convert document. Error: $code. Command: $command");
 		}
 		
 		//Remove original document

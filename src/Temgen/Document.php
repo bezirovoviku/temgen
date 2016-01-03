@@ -5,6 +5,8 @@ class Document
 {
 	protected $contents = '';
 	
+	protected $filename = null;
+	
 	public function __construct($filename = null) {
 		if ($filename) {
 			$this->load($filename);
@@ -12,6 +14,7 @@ class Document
 	}
 	
 	public function load($filename) {
+		$this->filename = $filename;
 		$this->setContents(file_get_contents($filename));
 	}
 	
@@ -20,7 +23,11 @@ class Document
 	}
 	
 	public function getExtension() {
-		return 'txt';
+		return $this->filename ? pathinfo($this->filename, PATHINFO_EXTENSION) : 'txt';
+	}
+	
+	public function setFilename($name) {
+		$this->filename = $name;
 	}
 	
 	public function setContents($content) {

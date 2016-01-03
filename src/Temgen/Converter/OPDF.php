@@ -11,7 +11,7 @@ class OPDF extends Batch
 	}
 	
 	protected function getCommand($import, $export, $temp) {
-		return escapeshellarg($this->path) . " --headless -convert-to pdf " . escapeshellarg($import) . " -outdir " . escapeshellarg($temp);
+		return escapeshellcmd($this->path) . " --headless -convert-to pdf " . escapeshellarg($import) . " -outdir " . escapeshellarg($temp);
 	}
 	
 	public function getExtension() {

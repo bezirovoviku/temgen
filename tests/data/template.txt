@@ -1,4 +1,4 @@
-{nadpis} – {$date | date *d-m-Y H:i:s* }
+{nadpis} â€“ {$date | date *d-m-Y H:i:s* }
 
 {$number|number eu 4}
 

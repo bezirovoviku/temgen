@@ -11,7 +11,7 @@ class PPDF extends Batch
 	}
 	
 	protected function getCommand($import, $export, $temp) {
-		return escapeshellarg($this->path);
+		return escapeshellcmd($this->path) . " ../rasterize.js " . escapeshellarg($import) . " " . escapeshellarg($export);
 	}
 	
 	public function getExtension() {

@@ -3,15 +3,15 @@ namespace Temgen\Generator;
 
 class Docx extends \Temgen\Generator
 {
-	///@var \Temgen\Document\Docx $template template used for generation
+	///@var \Temgen\Document $template template used for generation
 	protected $template;
 	
 	/**
 	 * Sets template used for generation
 	 *
-	 * @param \Temgen\Document\Docx $document template
+	 * @param \Temgen\Document $document template
 	 */
-	public function setTemplate(\Temgen\Document\Docx $document) {
+	public function setTemplate(\Temgen\Document $document) {
 		$this->template = $document;
 	}
 	

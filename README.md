@@ -84,7 +84,7 @@ This requires libreoffice installed
 //Creates docx generator
 $generator = new Generator\Docx();
 //PDF converter
-$converter = new Convertor\OPDF();
+$converter = new Converter\OPDF();
 //Adds basic filters
 $generator->addFilters();
 //Sets temporary folder used to store documents

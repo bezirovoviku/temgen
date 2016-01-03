@@ -11,6 +11,7 @@ composer require bezirovoviku/temgen
 ## Requirements
 
 LibreOffice (2+) - only for OPDF converter
+
 PhantomJS - only for PPDF converter
 
 ## Usage

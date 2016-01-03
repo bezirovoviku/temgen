@@ -31,7 +31,7 @@ $generator->addFilters();
 //Sets temporary folder used to store documents
 $generator->setTmp('/tmp');
 //Sets path to template file
-$generator->setTemplate('template.html');
+$generator->setTemplate(new Document('template.html'));
 //Generates zip archive from specified data
 $generator->generateArchive(json_decode($this->data, true), 'archive.zip');
 ```
@@ -84,13 +84,13 @@ This requires libreoffice installed
 //Creates docx generator
 $generator = new Generator\Docx();
 //PDF converter
-$converter = new Convertor\OPDF();
+$converter = new Converter\OPDF();
 //Adds basic filters
 $generator->addFilters();
 //Sets temporary folder used to store documents
 $generator->setTmp('/tmp');
 //Sets path to template file
-$generator->setTemplate('template.docx');
+$generator->setTemplate(new Document\Docx('template.docx'));
 //Generates zip archive from specified data, converts using converter
 $generator->generateArchive(json_decode($this->data, true), 'archive.zip', $converter);
 ```
